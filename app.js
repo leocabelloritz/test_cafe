@@ -31,3 +31,16 @@ function iniciarTemporizador() {
         segundos--;
     }, 1000);
 }
+// Detectar cambios en el menú desplegable
+document.getElementById('metodo').addEventListener('change', function() {
+    const infoMolienda = document.getElementById('info-molienda');
+    const valor = this.value;
+
+    if (valor === "180") {
+        infoMolienda.innerText = "Molienda: Media-Fina (como sal de mesa)";
+    } else if (valor === "240") {
+        infoMolienda.innerText = "Molienda: Gruesa (como sal marina)";
+    } else if (valor === "90") {
+        infoMolienda.innerText = "Molienda: Fina (como azúcar glass)";
+    }
+});
