@@ -70,3 +70,14 @@ if (selectorMolino) {
         infoMolienda.innerText = (tipo === 'manual') ? "Molienda: Manual (10-11)" : "Molienda: Eléctrico (30-35)";
     });
 }
+function mostrarOpciones() {
+    const metodo = document.getElementById('metodo').value;
+    const divFrancesa = document.getElementById('opciones-francesa');
+    
+    // Si elegimos francesa, mostramos el div; si no, lo ocultamos
+    if (metodo === 'francesa') {
+        divFrancesa.style.display = 'block';
+    } else {
+        divFrancesa.style.display = 'none';
+    }
+}
