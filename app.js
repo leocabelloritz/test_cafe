@@ -1,46 +1,45 @@
 let temporizadorActual = null;
 
 function iniciarTemporizador() {
-    // 1. Si ya existe, lo eliminamos totalmente
-    if (temporizadorActual) {
-        clearInterval(temporizadorActual);
-    }
-
-    // 2. Desactivamos el botón para evitar pulsaciones múltiples
+    const selector = document.getElementById('metodo');
+    const valor = parseInt(selector.value);
+    const display = document.getElementById('temporizador');
     const boton = document.querySelector('button');
+
+    // Solo para Prensa Francesa, haremos dos pasos: 30s y el resto
+    let pasos = (valor === 240) ? [30, 210] : [valor]; 
+    let pasoActual = 0;
+
     boton.disabled = true;
 
-    const selector = document.getElementById('metodo');
-    let segundos = parseInt(selector.value); 
-    const display = document.getElementById('temporizador');
-    
-    // 3. Iniciamos el nuevo intervalo
-    temporizadorActual = setInterval(() => {
-        let min = Math.floor(segundos / 60);
-        let seg = segundos % 60;
-        
-        display.innerHTML = `${min}:${seg < 10 ? '0' : ''}${seg}`;
-        
-        if (segundos <= 0) {
-            clearInterval(temporizadorActual);
-            temporizadorActual = null; // Reiniciamos
-            boton.disabled = false;    // Reactivamos el botón
-            alert("¡Tu café está listo!");
-            navigator.vibrate([1000, 500, 1000]);
+    function ejecutarPaso() {
+        if (pasoActual >= pasos.length) {
+            boton.disabled = false;
+            alert("¡Café listo para servir!");
+            return;
         }
-        segundos--;
-    }, 1000);
-}
-// Detectar cambios en el menú desplegable
-document.getElementById('metodo').addEventListener('change', function() {
-    const infoMolienda = document.getElementById('info-molienda');
-    const valor = this.value;
 
-    if (valor === "180") {
-        infoMolienda.innerText = "Molienda: Media-Fina (como sal de mesa)";
-    } else if (valor === "240") {
-        infoMolienda.innerText = "Molienda: Gruesa (como sal marina)";
-    } else if (valor === "90") {
-        infoMolienda.innerText = "Molienda: Fina (como azúcar glass)";
+        let segundos = pasos[pasoActual];
+        
+        temporizadorActual = setInterval(() => {
+            let min = Math.floor(segundos / 60);
+            let seg = segundos % 60;
+            display.innerHTML = `Paso ${pasoActual + 1}: ${min}:${seg < 10 ? '0' : ''}${seg}`;
+
+            if (segundos <= 0) {
+                clearInterval(temporizadorActual);
+                pasoActual++;
+                if (pasoActual < pasos.length) {
+                    alert("¡Tiempo de espera terminado! Ahora completa con el agua.");
+                    ejecutarPaso(); // Inicia el siguiente paso
+                } else {
+                    boton.disabled = false;
+                    alert("¡Tu café está listo!");
+                }
+            }
+            segundos--;
+        }, 1000);
     }
-});
+
+    ejecutarPaso();
+}
