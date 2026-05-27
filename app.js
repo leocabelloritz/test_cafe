@@ -1,9 +1,11 @@
+let temporizadorActual = null;
+
 function iniciarTemporizador() {
-    const metodo = document.getElementById('metodo').value; // Ahora es 'v60' o 'francesa'
+    const metodo = document.getElementById('metodo').value;
     const display = document.getElementById('temporizador');
     const boton = document.querySelector('button');
 
-    // Definimos los pasos según el método seleccionado
+    // 1. Definimos los pasos según el método
     let pasos = [];
     if (metodo === 'francesa') {
         pasos = [{nombre: "Bloom", tiempo: 30}, {nombre: "Vertido", tiempo: 210}];
@@ -15,18 +17,11 @@ function iniciarTemporizador() {
     
     let pasoActual = 0;
     boton.disabled = true;
-    // Definimos los pasos con nombre y tiempo (en segundos)
-    let pasos = (valor === 240) 
-        ? [{nombre: "Bloom", tiempo: 30}, {nombre: "Vertido", tiempo: 210}] 
-        : [{nombre: "Infusión", tiempo: valor}];
-    
-    let pasoActual = 0;
-    boton.disabled = true;
 
+    // 2. Función interna que ejecuta la secuencia
     function ejecutarPaso() {
         if (pasoActual >= pasos.length) {
             boton.disabled = false;
-            alert("¡Tu café está listo!");
             return;
         }
 
@@ -36,7 +31,6 @@ function iniciarTemporizador() {
         temporizadorActual = setInterval(() => {
             let min = Math.floor(segundos / 60);
             let seg = segundos % 60;
-            // Mostramos el nombre del paso en lugar de "Paso 1"
             display.innerHTML = `${paso.nombre}: ${min}:${seg < 10 ? '0' : ''}${seg}`;
 
             if (segundos <= 0) {
@@ -56,6 +50,7 @@ function iniciarTemporizador() {
 
     ejecutarPaso();
 }
+
 // Función para calcular el agua según el ratio
 function calcularAgua() {
     const gramos = document.getElementById('gramos').value;
@@ -66,14 +61,12 @@ function calcularAgua() {
     resultado.innerText = `Agua necesaria: ${aguaTotal}ml`;
 }
 
-// Actualizar molienda cuando cambie el molino
-document.getElementById('molino').addEventListener('change', function() {
-    const infoMolienda = document.getElementById('info-molienda');
-    const tipo = this.value;
-    
-    if (tipo === 'manual') {
-        infoMolienda.innerText = "Molienda Prensa: Ajuste Manual a 10-11";
-    } else {
-        infoMolienda.innerText = "Molienda Prensa: Ajuste Eléctrico a 30-35";
-    }
-});
+// Actualizar molienda (solo si el elemento existe)
+const selectorMolino = document.getElementById('molino');
+if (selectorMolino) {
+    selectorMolino.addEventListener('change', function() {
+        const infoMolienda = document.getElementById('info-molienda');
+        const tipo = this.value;
+        infoMolienda.innerText = (tipo === 'manual') ? "Molienda: Manual (10-11)" : "Molienda: Eléctrico (30-35)";
+    });
+}
