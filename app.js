@@ -81,3 +81,5 @@ function mostrarOpciones() {
         divFrancesa.style.display = 'none';
     }
 }
+// Forzar la revisión del menú al cargar la página
+window.onload = mostrarOpciones;
