@@ -83,3 +83,8 @@ function mostrarOpciones() {
 }
 // Forzar la revisión del menú al cargar la página
 window.onload = mostrarOpciones;
+function actualizarMolienda() {
+    const infoMolienda = document.getElementById('info-molienda');
+    const tipo = document.getElementById('molino').value;
+    infoMolienda.innerText = (tipo === 'manual') ? "Molienda: Manual (10-11)" : "Molienda: Eléctrico (30-35)";
+}
