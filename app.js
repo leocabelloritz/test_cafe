@@ -6,35 +6,39 @@ function iniciarTemporizador() {
     const display = document.getElementById('temporizador');
     const boton = document.querySelector('button');
 
-    // Solo para Prensa Francesa, haremos dos pasos: 30s y el resto
-    let pasos = (valor === 240) ? [30, 210] : [valor]; 
+    // Definimos los pasos con nombre y tiempo (en segundos)
+    let pasos = (valor === 240) 
+        ? [{nombre: "Bloom", tiempo: 30}, {nombre: "Vertido", tiempo: 210}] 
+        : [{nombre: "Infusión", tiempo: valor}];
+    
     let pasoActual = 0;
-
     boton.disabled = true;
 
     function ejecutarPaso() {
         if (pasoActual >= pasos.length) {
             boton.disabled = false;
-            alert("¡Café listo para servir!");
+            alert("¡Tu café está listo!");
             return;
         }
 
-        let segundos = pasos[pasoActual];
+        let paso = pasos[pasoActual];
+        let segundos = paso.tiempo;
         
         temporizadorActual = setInterval(() => {
             let min = Math.floor(segundos / 60);
             let seg = segundos % 60;
-            display.innerHTML = `Paso ${pasoActual + 1}: ${min}:${seg < 10 ? '0' : ''}${seg}`;
+            // Mostramos el nombre del paso en lugar de "Paso 1"
+            display.innerHTML = `${paso.nombre}: ${min}:${seg < 10 ? '0' : ''}${seg}`;
 
             if (segundos <= 0) {
                 clearInterval(temporizadorActual);
                 pasoActual++;
                 if (pasoActual < pasos.length) {
-                    alert("¡Tiempo de espera terminado! Ahora completa con el agua.");
-                    ejecutarPaso(); // Inicia el siguiente paso
+                    alert(`¡${paso.nombre} terminado! Prepárate para el siguiente.`);
+                    ejecutarPaso(); 
                 } else {
                     boton.disabled = false;
-                    alert("¡Tu café está listo!");
+                    alert("¡Café listo para servir!");
                 }
             }
             segundos--;
