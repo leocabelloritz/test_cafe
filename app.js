@@ -47,3 +47,24 @@ function iniciarTemporizador() {
 
     ejecutarPaso();
 }
+// Función para calcular el agua según el ratio
+function calcularAgua() {
+    const gramos = document.getElementById('gramos').value;
+    const ratio = document.getElementById('ratio').value;
+    const resultado = document.getElementById('resultado-agua');
+    const aguaTotal = gramos * ratio;
+    
+    resultado.innerText = `Agua necesaria: ${aguaTotal}ml`;
+}
+
+// Actualizar molienda cuando cambie el molino
+document.getElementById('molino').addEventListener('change', function() {
+    const infoMolienda = document.getElementById('info-molienda');
+    const tipo = this.value;
+    
+    if (tipo === 'manual') {
+        infoMolienda.innerText = "Molienda Prensa: Ajuste Manual a 10-11";
+    } else {
+        infoMolienda.innerText = "Molienda Prensa: Ajuste Eléctrico a 30-35";
+    }
+});
