@@ -9,6 +9,7 @@
         body { font-family: sans-serif; text-align: center; padding: 20px; }
         #temporizador { font-size: 3rem; margin: 20px 0; }
         button { padding: 15px 30px; font-size: 1.2rem; margin-top: 20px; }
+        .opciones-extra { margin: 20px 0; border: 1px solid #ddd; padding: 15px; border-radius: 10px; }
     </style>
 </head>
 <body>
@@ -17,37 +18,37 @@
     <div id="temporizador">00:00</div>
     
     <div id="info-molienda" style="margin: 15px 0; font-weight: bold; color: #555;">
-        Selecciona un método para ver la molienda.
+        Selecciona un método.
     </div>
 
-    <label for="metodo">Elige tu cafetera:</label>
-    <label for="molino">Tipo de molino:</label>
-<select id="molino">
-    <option value="manual">Manual (10-11)</option>
-    <option value="electrico">Eléctrico (30-35)</option>
-</select>
-
-<label for="ratio">Intensidad (Ratio):</label>
-<select id="ratio">
-    <option value="16">Suave (1:16)</option>
-    <option value="14">Cargado (1:14)</option>
-    <option value="12">Muy fuerte (1:12)</option>
-    <option value="10">Concentrado (1:10)</option>
-</select>
-
-<label for="gramos">Gramos de café:</label>
-<input type="number" id="gramos" value="20" onchange="calcularAgua()">
-
-<div id="resultado-agua" style="font-size: 1.2rem; margin: 10px 0; color: #d35400;">
-    Agua necesaria: 320ml
-</div>
-
-    <br>
-    <select id="metodo" style="padding: 10px; margin-top: 10px;">
-        <option value="180">V60 (3 min)</option>
-        <option value="240">Prensa Francesa (4 min)</option>
-        <option value="90">AeroPress (1.5 min)</option>
+    <label for="metodo">Elige tu cafetera:</label><br>
+    <select id="metodo" onchange="mostrarOpciones()" style="padding: 10px; margin-top: 10px;">
+        <option value="v60">V60</option>
+        <option value="francesa">Prensa Francesa</option>
+        <option value="aeropress">AeroPress</option>
     </select>
+
+    <div id="opciones-francesa" class="opciones-extra" style="display: none;">
+        <label>Tipo de molino:</label><br>
+        <select id="molino" onchange="actualizarMolienda()">
+            <option value="manual">Manual (10-11)</option>
+            <option value="electrico">Eléctrico (30-35)</option>
+        </select>
+        
+        <br><br><label>Intensidad (Ratio):</label><br>
+        <select id="ratio" onchange="calcularAgua()">
+            <option value="16">Suave (1:16)</option>
+            <option value="14">Cargado (1:14)</option>
+            <option value="12">Muy fuerte (1:12)</option>
+        </select>
+        
+        <br><br><label>Gramos de café:</label><br>
+        <input type="number" id="gramos" value="20" onchange="calcularAgua()" style="padding: 5px;">
+        
+        <div id="resultado-agua" style="margin-top: 10px; color: #d35400; font-weight: bold;">
+            Agua necesaria: 320ml
+        </div>
+    </div>
     
     <br>
     <button onclick="iniciarTemporizador()">Iniciar Infusión</button>
