@@ -7,31 +7,30 @@
     <link rel="manifest" href="manifest.json">
     <style>
         body { font-family: sans-serif; text-align: center; padding: 20px; }
-        button { padding: 20px; font-size: 1.2rem; margin-top: 20px; }
+        #temporizador { font-size: 3rem; margin: 20px 0; }
+        button { padding: 15px 30px; font-size: 1.2rem; margin-top: 20px; }
     </style>
 </head>
 <body>
     <h1>Mi Café</h1>
-    <label for="metodo">Elige tu cafetera:</label>
-<select id="metodo">
-    <option value="180">V60 (3 min)</option>
-    <option value="240">Prensa Francesa (4 min)</option>
-    <option value="90">AeroPress (1.5 min)</option>
-</select>
+    
     <div id="temporizador">00:00</div>
+    
+    <div id="info-molienda" style="margin: 15px 0; font-weight: bold; color: #555;">
+        Selecciona un método para ver la molienda.
+    </div>
+
+    <label for="metodo">Elige tu cafetera:</label>
+    <br>
+    <select id="metodo" style="padding: 10px; margin-top: 10px;">
+        <option value="180">V60 (3 min)</option>
+        <option value="240">Prensa Francesa (4 min)</option>
+        <option value="90">AeroPress (1.5 min)</option>
+    </select>
+    
+    <br>
     <button onclick="iniciarTemporizador()">Iniciar Infusión</button>
 
     <script src="app.js"></script>
 </body>
 </html>
-<h1>Mi Café</h1>
-<div id="temporizador">00:00</div>
-
-<div id="info-molienda" style="margin: 15px 0; font-weight: bold; color: #555;">
-    Selecciona un método para ver la molienda.
-</div>
-
-<label for="metodo">Elige tu cafetera:</label>
-<select id="metodo">
-    </select>
-<button onclick="iniciarTemporizador()">Iniciar Infusión</button>
