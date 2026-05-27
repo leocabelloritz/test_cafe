@@ -1,17 +1,20 @@
-// Variable global para guardar el ID del temporizador
 let temporizadorActual = null;
 
 function iniciarTemporizador() {
-    // 1. Si ya había un temporizador corriendo, lo apagamos
-    if (temporizadorActual !== null) {
+    // 1. Si ya existe, lo eliminamos totalmente
+    if (temporizadorActual) {
         clearInterval(temporizadorActual);
     }
+
+    // 2. Desactivamos el botón para evitar pulsaciones múltiples
+    const boton = document.querySelector('button');
+    boton.disabled = true;
 
     const selector = document.getElementById('metodo');
     let segundos = parseInt(selector.value); 
     const display = document.getElementById('temporizador');
     
-    // 2. Guardamos el nuevo intervalo en nuestra variable global
+    // 3. Iniciamos el nuevo intervalo
     temporizadorActual = setInterval(() => {
         let min = Math.floor(segundos / 60);
         let seg = segundos % 60;
@@ -20,7 +23,8 @@ function iniciarTemporizador() {
         
         if (segundos <= 0) {
             clearInterval(temporizadorActual);
-            temporizadorActual = null; // Reiniciamos el estado
+            temporizadorActual = null; // Reiniciamos
+            boton.disabled = false;    // Reactivamos el botón
             alert("¡Tu café está listo!");
             navigator.vibrate([1000, 500, 1000]);
         }
