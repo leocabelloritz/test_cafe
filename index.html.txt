@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barista Pro</title>
+    <link rel="manifest" href="manifest.json">
+    <style>
+        body { font-family: sans-serif; text-align: center; padding: 20px; }
+        button { padding: 20px; font-size: 1.2rem; margin-top: 20px; }
+    </style>
+</head>
+<body>
+    <h1>Mi Café</h1>
+    <div id="temporizador">00:00</div>
+    <button onclick="iniciarTemporizador()">Iniciar Infusión</button>
+
+    <script src="app.js"></script>
+</body>
+</html>
