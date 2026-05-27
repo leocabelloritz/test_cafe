@@ -1,11 +1,20 @@
-let temporizadorActual = null;
-
 function iniciarTemporizador() {
-    const selector = document.getElementById('metodo');
-    const valor = parseInt(selector.value);
+    const metodo = document.getElementById('metodo').value; // Ahora es 'v60' o 'francesa'
     const display = document.getElementById('temporizador');
     const boton = document.querySelector('button');
 
+    // Definimos los pasos según el método seleccionado
+    let pasos = [];
+    if (metodo === 'francesa') {
+        pasos = [{nombre: "Bloom", tiempo: 30}, {nombre: "Vertido", tiempo: 210}];
+    } else if (metodo === 'v60') {
+        pasos = [{nombre: "Infusión", tiempo: 180}];
+    } else {
+        pasos = [{nombre: "Infusión", tiempo: 90}]; // AeroPress
+    }
+    
+    let pasoActual = 0;
+    boton.disabled = true;
     // Definimos los pasos con nombre y tiempo (en segundos)
     let pasos = (valor === 240) 
         ? [{nombre: "Bloom", tiempo: 30}, {nombre: "Vertido", tiempo: 210}] 
