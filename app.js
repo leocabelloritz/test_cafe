@@ -80,5 +80,4 @@ function mostrarOpciones() {
 
 window.onload = function() {
     mostrarOpciones();
-    actualizarMolienda();
 };
