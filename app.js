@@ -1,6 +1,6 @@
 let temporizadorActual = null;
 
-function iniciarTemporizador()
+function iniciarTemporizador() {
     const metodo = document.getElementById('metodo').value;
     const display = document.getElementById('temporizador');
     const boton = document.querySelector('button');
@@ -63,8 +63,6 @@ function iniciarTemporizador()
 
     ejecutarPaso();
 }
-}
-
 // Función para calcular el agua
 function calcularAgua() {
     const gramos = document.getElementById('gramos').value || 0;
