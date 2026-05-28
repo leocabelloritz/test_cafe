@@ -78,14 +78,6 @@ function mostrarOpciones() {
     }
 }
 
-function actualizarMolienda() {
-    const infoMolienda = document.getElementById('info-molienda');
-    const tipo = document.getElementById('molino').value;
-    if (infoMolienda) {
-        infoMolienda.innerText = (tipo === 'manual') ? "Molienda: Manual (10-11)" : "Molienda: Eléctrico (30-35)";
-    }
-}
-
 window.onload = function() {
     mostrarOpciones();
     actualizarMolienda();
