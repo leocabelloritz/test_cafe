@@ -21,12 +21,19 @@ async function solicitarWakeLock() {
     }
 }
 
-// Función para disparar vibración
 function dispararAlerta() {
+    // 1. Vibración (funciona si estás mirando la pantalla)
     if ("vibrate" in navigator) {
-        navigator.vibrate([500, 200, 500, 200, 500]);
+        navigator.vibrate([1000, 500, 1000]);
     }
-    // Opcional: Podrías añadir aquí un audio si tienes un archivo .mp3
+    
+    // 2. Notificación del sistema (funciona incluso con pantalla bloqueada)
+    if (Notification.permission === "granted") {
+        new Notification("Barista Umbra", {
+            body: "¡El café está listo!",
+            icon: "icon.png"
+        });
+    }
 }
 
 function iniciarTemporizador() {
