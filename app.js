@@ -22,16 +22,18 @@ async function solicitarWakeLock() {
 }
 
 function dispararAlerta() {
-    // 1. Vibración (funciona si estás mirando la pantalla)
+    // 1. Vibración (funciona si la pantalla está encendida/activa)
     if ("vibrate" in navigator) {
         navigator.vibrate([1000, 500, 1000]);
     }
     
-    // 2. Notificación del sistema (funciona incluso con pantalla bloqueada)
+    // 2. Notificación con metadatos de vibración
     if (Notification.permission === "granted") {
         new Notification("Barista Umbra", {
             body: "¡El café está listo!",
-            icon: "icon.png"
+            icon: "icon.png",
+            vibrate: [200, 100, 200, 100, 200], // Vibración nativa de la notificación
+            silent: false // Esto obliga al sonido de notificación del sistema
         });
     }
 }
