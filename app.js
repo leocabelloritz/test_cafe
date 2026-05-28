@@ -5,32 +5,35 @@ function iniciarTemporizador() {
     const display = document.getElementById('temporizador');
     const boton = document.querySelector('button');
 
-    // Manejo especial para Moka: no tiene temporizador
+    // 1. Si es Moka, solo avisamos y salimos
     if (metodo === 'moka') {
         alert("¡Atención! Observa el flujo. Saca del fuego antes de que salga con violencia.");
         return;
     }
 
-    // 1. Definimos los pasos según el método
+    // 2. Limpiamos cualquier temporizador previo antes de empezar
+    if (temporizadorActual) {
+        clearInterval(temporizadorActual);
+    }
+
+    // 3. Definimos pasos
     let pasos = [];
     if (metodo === 'francesa') {
         pasos = [{nombre: "Bloom", tiempo: 30}, {nombre: "Vertido", tiempo: 210}];
     } else if (metodo === 'v60') {
         pasos = [{nombre: "Infusión", tiempo: 180}];
-    } else if (metodo === 'aeropress') {
-        pasos = [{nombre: "Infusión", tiempo: 90}];
+    } else {
+        pasos = [{nombre: "Infusión", tiempo: 90}]; // AeroPress
     }
-    
-    // Si no es ninguno de los anteriores, no hacemos nada
-    if (pasos.length === 0) return;
     
     let pasoActual = 0;
     boton.disabled = true;
 
-    // 2. Función interna que ejecuta la secuencia
+    // 4. Función de ejecución directa
     function ejecutarPaso() {
         if (pasoActual >= pasos.length) {
             boton.disabled = false;
+            display.innerHTML = "0:00";
             return;
         }
 
@@ -51,6 +54,7 @@ function iniciarTemporizador() {
                 } else {
                     boton.disabled = false;
                     alert("¡Café listo para servir!");
+                    display.innerHTML = "0:00";
                 }
             }
             segundos--;
@@ -58,6 +62,7 @@ function iniciarTemporizador() {
     }
 
     ejecutarPaso();
+}
 }
 
 // Función para calcular el agua
