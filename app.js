@@ -98,12 +98,6 @@ function obtenerTemperatura(metodo) {
     return temps[metodo] || '90°C'; 
 }
 
-    // Limpiamos la temperatura al cambiar de método
-    if (tempDisplay) {
-        tempDisplay.innerText = "";
-    }
-}
-
 window.onload = function() {
     mostrarOpciones();
 };
