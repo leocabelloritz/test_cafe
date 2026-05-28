@@ -1,0 +1,14 @@
+/* style.css */
+body { 
+    font-family: 'Segoe UI', sans-serif; 
+    text-align: center; 
+    padding: 20px; 
+    background-color: #C5AB9F; 
+    color: #3B3330; 
+}
+
+#temporizador { font-size: 3rem; margin: 20px 0; font-weight: bold; }
+button { padding: 15px 30px; font-size: 1.2rem; cursor: pointer; border-radius: 8px; border: none; background-color: #3B3330; color: white; }
+button:disabled { background-color: #888; }
+.opciones-extra { margin: 20px 0; border: 1px solid #ddd; padding: 15px; border-radius: 10px; background: rgba(255,255,255,0.1); }
+.input-group { margin-bottom: 15px; }
