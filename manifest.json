@@ -1,9 +1,9 @@
 {
-  "name": "Barista Pro",
-  "short_name": "Cafe",
+  "name": "Barista Umbra",
+  "short_name": "UMBRA",
   "start_url": "index.html",
   "display": "standalone",
-  "background_color": "#ffffff",
+  "background_color": "#C5AB9F",
   "icons": [
     {
       "src": "icon.png",
