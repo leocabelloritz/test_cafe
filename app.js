@@ -70,16 +70,6 @@ function calcularAgua() {
     }
 }
 
-function obtenerTemperatura(metodo) {
-    const temps = {
-        'francesa': '92°C - 94°C',
-        'v60': '90°C - 93°C',
-        'aeropress': '85°C - 90°C',
-        'moka': '80°C (Agua precalentada)'
-    };
-    return temps[metodo] || '90°C'; // Temperatura por defecto
-}
-
 // Función única y corregida para mostrar opciones y temperatura
 function mostrarOpciones() {
     const metodo = document.getElementById('metodo').value;
