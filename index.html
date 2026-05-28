@@ -1,37 +1,28 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <link rel="stylesheet" href="style.css">
-    <meta charset="UTF-8">
-    <link rel="icon" type="image/png" href="icon.png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Barista</title>
+    <title>Barista Umbra</title>
     <link rel="manifest" href="manifest.json">
-    <style>
-        body { font-family: sans-serif; text-align: center; padding: 20px; background-color:#C5AB9F ; text-color: #3B3330}
-        #temporizador { font-size: 3rem; margin: 20px 0; }
-        button { padding: 15px 30px; font-size: 1.2rem; margin-top: 20px; }
-        .opciones-extra { margin: 20px 0; border: 1px solid #ddd; padding: 15px; border-radius: 10px; }
-    </style>
-    <script src="data.js"></script>
-<script src="app.js"></script>
+    <link rel="icon" type="image/png" href="icon.png">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <h1>CAFÉ</h1>
     
     <div id="temporizador">00:00</div>
-<div id="info-temperatura" style="font-size: 1rem; color: #555; margin-bottom: 10px;"></div>
+    <div id="info-temperatura"></div>
 
     <label for="metodo">Elige tu cafetera:</label><br>
-    <select id="metodo" onchange="mostrarOpciones()" style="padding: 10px; margin-top: 10px;">
+    <select id="metodo" onchange="mostrarOpciones()">
         <option value="v60">V60</option>
         <option value="francesa">Prensa Francesa</option>
         <option value="aeropress">AeroPress</option>
-        <option value="moka">Cafetera Moka</option> </select>
+        <option value="moka">Cafetera Moka</option>
     </select>
 
-    <div id="opciones-francesa" style="display: none; margin-top: 20px; border: 1px solid #ccc; padding: 10px;">
+    <div id="opciones-francesa" class="opciones-extra" style="display: none;">
         <label>Tipo de molino:</label><br>
         <select id="molino" onchange="actualizarMolienda()">
             <option value="manual">Manual (10-11)</option>
@@ -47,16 +38,16 @@
         </select>
         
         <br><br><label>Gramos de café:</label><br>
-        <input type="number" id="gramos" value="20" onchange="calcularAgua()" style="padding: 5px;">
+        <input type="number" id="gramos" value="20" onchange="calcularAgua()">
         
-        <div id="resultado-agua" style="margin-top: 10px; color: #d35400; font-weight: bold;">
-            Agua necesaria: 320ml
-        </div>
+        <div id="resultado-agua">Agua necesaria: 320ml</div>
     </div>
     
     <br>
     <button onclick="iniciarTemporizador()">Iniciar Infusión</button>
 
+    <!-- Scripts al final -->
+    <script src="data.js"></script>
     <script src="app.js"></script>
 </body>
 </html>
