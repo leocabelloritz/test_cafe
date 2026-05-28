@@ -16,7 +16,7 @@ function iniciarTemporizador() {
 
     let pasos = [];
     if (metodo === 'francesa') {
-        pasos = [{nombre: "Bloom", tiempo: 30}, {nombre: "Vertido", tiempo: 210}];
+        pasos = [{nombre: "Bloom", tiempo: 30}, {nombre: "Vertido", tiempo: 240}];
     } else if (metodo === 'v60') {
         pasos = [{nombre: "Infusión", tiempo: 180}];
     } else {
