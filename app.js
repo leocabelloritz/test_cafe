@@ -5,31 +5,27 @@ function iniciarTemporizador() {
     const display = document.getElementById('temporizador');
     const boton = document.querySelector('button');
 
-    // 1. Si es Moka, solo avisamos y salimos
     if (metodo === 'moka') {
         alert("¡Atención! Observa el flujo. Saca del fuego antes de que salga con violencia.");
         return;
     }
 
-    // 2. Limpiamos cualquier temporizador previo antes de empezar
     if (temporizadorActual) {
         clearInterval(temporizadorActual);
     }
 
-    // 3. Definimos pasos
     let pasos = [];
     if (metodo === 'francesa') {
         pasos = [{nombre: "Bloom", tiempo: 30}, {nombre: "Vertido", tiempo: 210}];
     } else if (metodo === 'v60') {
         pasos = [{nombre: "Infusión", tiempo: 180}];
     } else {
-        pasos = [{nombre: "Infusión", tiempo: 90}]; // AeroPress
+        pasos = [{nombre: "Infusión", tiempo: 90}]; 
     }
     
     let pasoActual = 0;
     boton.disabled = true;
 
-    // 4. Función de ejecución directa
     function ejecutarPaso() {
         if (pasoActual >= pasos.length) {
             boton.disabled = false;
@@ -62,8 +58,9 @@ function iniciarTemporizador() {
     }
 
     ejecutarPaso();
-}
-// Función para calcular el agua
+} // Aquí termina correctamente
+
+// Ahora las otras funciones funcionarán porque están fuera de la anterior
 function calcularAgua() {
     const gramos = document.getElementById('gramos').value || 0;
     const ratio = document.getElementById('ratio').value || 16;
@@ -73,7 +70,6 @@ function calcularAgua() {
     }
 }
 
-// Mostrar opciones solo si es francesa
 function mostrarOpciones() {
     const metodo = document.getElementById('metodo').value;
     const divFrancesa = document.getElementById('opciones-francesa');
@@ -82,7 +78,6 @@ function mostrarOpciones() {
     }
 }
 
-// Actualizar texto de molienda
 function actualizarMolienda() {
     const infoMolienda = document.getElementById('info-molienda');
     const tipo = document.getElementById('molino').value;
@@ -91,7 +86,6 @@ function actualizarMolienda() {
     }
 }
 
-// Inicialización al cargar la página
 window.onload = function() {
     mostrarOpciones();
     actualizarMolienda();
