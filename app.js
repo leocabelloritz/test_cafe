@@ -3,11 +3,7 @@ let temporizadorActual = null;
 function iniciarTemporizador() {
     const metodo = document.getElementById('metodo').value;
     const display = document.getElementById('temporizador');
-    const tempDisplay = document.getElementById('info-temperatura'); // Nuevo
     const boton = document.querySelector('button');
-
-    // Mostramos la temperatura apenas inicia
-    tempDisplay.innerText = `Temperatura ideal: ${obtenerTemperatura(metodo)}`;
 
     if (metodo === 'moka') {
         alert("¡Atención! Observa el flujo. Saca del fuego antes de que salga con violencia.");
