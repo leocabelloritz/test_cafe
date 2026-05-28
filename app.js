@@ -1,12 +1,31 @@
 let temporizadorActual = null;
+let wakeLock = null;
+
+// Función para solicitar que la pantalla no se apague
+async function solicitarWakeLock() {
+    try {
+        if ('wakeLock' in navigator) {
+            wakeLock = await navigator.wakeLock.request('screen');
+            console.log('Wake Lock activado');
+        }
+    } catch (err) {
+        console.error(`${err.name}, ${err.message}`);
+    }
+}
+
+// Función para disparar vibración
+function dispararAlerta() {
+    if ("vibrate" in navigator) {
+        navigator.vibrate([500, 200, 500, 200, 500]);
+    }
+    // Opcional: Podrías añadir aquí un audio si tienes un archivo .mp3
+}
 
 function iniciarTemporizador() {
     const metodo = document.getElementById('metodo').value;
+    const configMetodo = CONFIG[metodo];
     const display = document.getElementById('temporizador');
     const boton = document.querySelector('button');
-    
-    // Obtenemos los datos del método desde el objeto global CONFIG
-    const configMetodo = CONFIG[metodo];
 
     if (metodo === 'moka') {
         alert("¡Atención! Observa el flujo. Saca del fuego antes de que salga con violencia.");
@@ -14,6 +33,8 @@ function iniciarTemporizador() {
     }
 
     if (temporizadorActual) clearInterval(temporizadorActual);
+    
+    solicitarWakeLock(); // Evita que la pantalla se apague
 
     let pasos = configMetodo.pasos;
     let pasoActual = 0;
@@ -23,32 +44,41 @@ function iniciarTemporizador() {
         if (pasoActual >= pasos.length) {
             boton.disabled = false;
             display.innerHTML = "0:00";
+            if (wakeLock !== null) wakeLock.release();
             return;
         }
 
-        let paso = pasos[pasoActual];
-        let segundos = paso.tiempo;
-        
-        temporizadorActual = setInterval(() => {
-            let min = Math.floor(segundos / 60);
-            let seg = segundos % 60;
-            display.innerHTML = `${paso.nombre}: ${min}:${seg < 10 ? '0' : ''}${seg}`;
+        const paso = pasos[pasoActual];
+        const duracionMs = paso.tiempo * 1000;
+        const tiempoInicio = Date.now();
+        const tiempoFinal = tiempoInicio + duracionMs;
 
-            if (segundos <= 0) {
+        temporizadorActual = setInterval(() => {
+            const ahora = Date.now();
+            const restante = tiempoFinal - ahora;
+
+            if (restante <= 0) {
                 clearInterval(temporizadorActual);
+                dispararAlerta();
                 pasoActual++;
+                
                 if (pasoActual < pasos.length) {
-                    alert(`¡${paso.nombre} terminado! Prepárate para el siguiente paso.`);
+                    alert(`¡${paso.nombre} terminado!`);
                     ejecutarPaso(); 
                 } else {
                     boton.disabled = false;
                     alert("¡Café listo para servir!");
                     display.innerHTML = "0:00";
+                    if (wakeLock !== null) wakeLock.release();
                 }
+            } else {
+                const min = Math.floor((restante / 1000 / 60) % 60);
+                const seg = Math.floor((restante / 1000) % 60);
+                display.innerHTML = `${paso.nombre}: ${min}:${seg < 10 ? '0' : ''}${seg}`;
             }
-            segundos--;
-        }, 1000);
+        }, 500);
     }
+
     ejecutarPaso();
 }
 
@@ -64,11 +94,14 @@ function mostrarOpciones() {
     const divFrancesa = document.getElementById('opciones-francesa');
     const tempDisplay = document.getElementById('info-temperatura');
     
-    divFrancesa.style.display = (metodo === 'francesa') ? 'block' : 'none';
+    if (divFrancesa) {
+        divFrancesa.style.display = (metodo === 'francesa') ? 'block' : 'none';
+    }
     
-    // Accedemos a la temperatura mediante la configuración
     const config = CONFIG[metodo];
-    tempDisplay.innerText = config ? `Temperatura ideal: ${config.temp}` : '';
+    if (tempDisplay && config) {
+        tempDisplay.innerText = `Temperatura ideal: ${config.temp}`;
+    }
 }
 
 window.onload = mostrarOpciones;
