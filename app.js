@@ -22,18 +22,18 @@ async function solicitarWakeLock() {
 }
 
 function dispararAlerta() {
-    // 1. Vibración (funciona si la pantalla está encendida/activa)
+    // 1. Intentamos vibrar (Android lo hará, iOS lo ignorará silenciosamente)
     if ("vibrate" in navigator) {
         navigator.vibrate([1000, 500, 1000]);
     }
     
-    // 2. Notificación con metadatos de vibración
+    // 2. Notificación persistente
     if (Notification.permission === "granted") {
         new Notification("Barista Umbra", {
-            body: "¡El café está listo!",
-            icon: "icon.png",
-            vibrate: [200, 100, 200, 100, 200], // Vibración nativa de la notificación
-            silent: false // Esto obliga al sonido de notificación del sistema
+            body: "¡El café está listo! Toca para descartar.",
+            icon: "icon.png", // Asegúrate de tener este archivo en la raíz
+            requireInteraction: true, // La clave: no desaparece sola
+            silent: false // Permite que el sistema use el sonido por defecto
         });
     }
 }
