@@ -1,6 +1,14 @@
 let temporizadorActual = null;
 let wakeLock = null;
 
+// Pedir permiso al cargar la página
+window.onload = () => {
+    if ("Notification" in window && Notification.permission !== "granted") {
+        Notification.requestPermission();
+    }
+    mostrarOpciones();
+};
+
 // Función para solicitar que la pantalla no se apague
 async function solicitarWakeLock() {
     try {
