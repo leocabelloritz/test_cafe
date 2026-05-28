@@ -4,25 +4,18 @@ function iniciarTemporizador() {
     const metodo = document.getElementById('metodo').value;
     const display = document.getElementById('temporizador');
     const boton = document.querySelector('button');
+    
+    // Obtenemos los datos del método desde el objeto global CONFIG
+    const configMetodo = CONFIG[metodo];
 
     if (metodo === 'moka') {
         alert("¡Atención! Observa el flujo. Saca del fuego antes de que salga con violencia.");
         return;
     }
 
-    if (temporizadorActual) {
-        clearInterval(temporizadorActual);
-    }
+    if (temporizadorActual) clearInterval(temporizadorActual);
 
-    let pasos = [];
-    if (metodo === 'francesa') {
-        pasos = [{nombre: "Bloom", tiempo: 30}, {nombre: "Vertido", tiempo: 240}];
-    } else if (metodo === 'v60') {
-        pasos = [{nombre: "Infusión", tiempo: 180}];
-    } else {
-        pasos = [{nombre: "Infusión", tiempo: 90}]; 
-    }
-    
+    let pasos = configMetodo.pasos;
     let pasoActual = 0;
     boton.disabled = true;
 
@@ -56,48 +49,26 @@ function iniciarTemporizador() {
             segundos--;
         }, 1000);
     }
-
     ejecutarPaso();
-} // Aquí termina correctamente
+}
 
-// Ahora las otras funciones funcionarán porque están fuera de la anterior
 function calcularAgua() {
     const gramos = document.getElementById('gramos').value || 0;
     const ratio = document.getElementById('ratio').value || 16;
     const resultado = document.getElementById('resultado-agua');
-    if (resultado) {
-        resultado.innerText = `Agua necesaria: ${gramos * ratio}ml`;
-    }
+    if (resultado) resultado.innerText = `Agua necesaria: ${gramos * ratio}ml`;
 }
 
-// Función única y corregida para mostrar opciones y temperatura
 function mostrarOpciones() {
     const metodo = document.getElementById('metodo').value;
     const divFrancesa = document.getElementById('opciones-francesa');
     const tempDisplay = document.getElementById('info-temperatura');
     
-    // 1. Manejo de visibilidad de las opciones extra
-    if (divFrancesa) {
-        divFrancesa.style.display = (metodo === 'francesa') ? 'block' : 'none';
-    }
+    divFrancesa.style.display = (metodo === 'francesa') ? 'block' : 'none';
     
-    // 2. Actualización de temperatura sin errores
-    if (tempDisplay) {
-        tempDisplay.innerText = `Temperatura ideal: ${obtenerTemperatura(metodo)}`;
-    }
+    // Accedemos a la temperatura mediante la configuración
+    const config = CONFIG[metodo];
+    tempDisplay.innerText = config ? `Temperatura ideal: ${config.temp}` : '';
 }
 
-// Función auxiliar para obtener los valores
-function obtenerTemperatura(metodo) {
-    const temps = {
-        'francesa': '92°C - 94°C',
-        'v60': '90°C - 93°C',
-        'aeropress': '85°C - 90°C',
-        'moka': '80°C (Agua precalentada)'
-    };
-    return temps[metodo] || '90°C'; 
-}
-
-window.onload = function() {
-    mostrarOpciones();
-};
+window.onload = mostrarOpciones;
