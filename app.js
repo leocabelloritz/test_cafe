@@ -95,12 +95,18 @@ function obtenerTemperatura(metodo) {
 function mostrarOpciones() {
     const metodo = document.getElementById('metodo').value;
     const divFrancesa = document.getElementById('opciones-francesa');
-    const tempDisplay = document.getElementById('info-temperatura'); // Agrega esto
+    const tempDisplay = document.getElementById('info-temperatura');
     
+    // 1. Manejo de visibilidad
     if (divFrancesa) {
         divFrancesa.style.display = (metodo === 'francesa') ? 'block' : 'none';
     }
     
+    // 2. Actualización inmediata de temperatura
+    if (tempDisplay) {
+        tempDisplay.innerText = `Temperatura ideal: ${obtenerTemperatura(metodo)}`;
+    }
+
     // Limpiamos la temperatura al cambiar de método
     if (tempDisplay) {
         tempDisplay.innerText = "";
