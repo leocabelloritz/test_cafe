@@ -70,14 +70,6 @@ function calcularAgua() {
     }
 }
 
-function mostrarOpciones() {
-    const metodo = document.getElementById('metodo').value;
-    const divFrancesa = document.getElementById('opciones-francesa');
-    if (divFrancesa) {
-        divFrancesa.style.display = (metodo === 'francesa') ? 'block' : 'none';
-    }
-}
-
 function obtenerTemperatura(metodo) {
     const temps = {
         'francesa': '92°C - 94°C',
@@ -88,20 +80,33 @@ function obtenerTemperatura(metodo) {
     return temps[metodo] || '90°C'; // Temperatura por defecto
 }
 
+// Función única y corregida para mostrar opciones y temperatura
 function mostrarOpciones() {
     const metodo = document.getElementById('metodo').value;
     const divFrancesa = document.getElementById('opciones-francesa');
     const tempDisplay = document.getElementById('info-temperatura');
     
-    // 1. Manejo de visibilidad
+    // 1. Manejo de visibilidad de las opciones extra
     if (divFrancesa) {
         divFrancesa.style.display = (metodo === 'francesa') ? 'block' : 'none';
     }
     
-    // 2. Actualización inmediata de temperatura
+    // 2. Actualización de temperatura sin errores
     if (tempDisplay) {
         tempDisplay.innerText = `Temperatura ideal: ${obtenerTemperatura(metodo)}`;
     }
+}
+
+// Función auxiliar para obtener los valores
+function obtenerTemperatura(metodo) {
+    const temps = {
+        'francesa': '92°C - 94°C',
+        'v60': '90°C - 93°C',
+        'aeropress': '85°C - 90°C',
+        'moka': '80°C (Agua precalentada)'
+    };
+    return temps[metodo] || '90°C'; 
+}
 
     // Limpiamos la temperatura al cambiar de método
     if (tempDisplay) {
