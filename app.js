@@ -45,7 +45,7 @@ function iniciarTemporizador() {
                 clearInterval(temporizadorActual);
                 pasoActual++;
                 if (pasoActual < pasos.length) {
-                    alert(`¡${paso.nombre} terminado! Prepárate para el siguiente.`);
+                    alert(`¡${paso.nombre} terminado! Prepárate para el siguiente paso.`);
                     ejecutarPaso(); 
                 } else {
                     boton.disabled = false;
