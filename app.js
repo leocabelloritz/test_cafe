@@ -103,5 +103,10 @@ function mostrarOpciones() {
         tempDisplay.innerText = `Temperatura ideal: ${config.temp}`;
     }
 }
+function actualizarMolienda() {
+    // Por ahora, solo es una función vacía para evitar errores
+    console.log("Molienda actualizada");
+}
+
 
 window.onload = mostrarOpciones;
