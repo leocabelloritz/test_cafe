@@ -92,6 +92,20 @@ function obtenerTemperatura(metodo) {
     return temps[metodo] || '90°C'; // Temperatura por defecto
 }
 
+function mostrarOpciones() {
+    const metodo = document.getElementById('metodo').value;
+    const divFrancesa = document.getElementById('opciones-francesa');
+    const tempDisplay = document.getElementById('info-temperatura'); // Agrega esto
+    
+    if (divFrancesa) {
+        divFrancesa.style.display = (metodo === 'francesa') ? 'block' : 'none';
+    }
+    
+    // Limpiamos la temperatura al cambiar de método
+    if (tempDisplay) {
+        tempDisplay.innerText = "";
+    }
+}
 
 window.onload = function() {
     mostrarOpciones();
