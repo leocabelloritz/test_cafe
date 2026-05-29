@@ -128,7 +128,45 @@ button:disabled { background-color: #888; }
     margin-bottom: 15px;
 }
 
-.espacio-blanco {
-    height: 25px; 
+.espacio-blanco { height: 25px; width: 100%;}
+
+/* --- BANNER Y BOTÓN DE MENÚ --- */
+.banner {
+    background-color: #3B3330;
+    color: #FFFFFF;
+    padding: 15px 20px; /* Padding vertical y horizontal */
     width: 100%;
+    margin-bottom: 25px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+    display: flex;
+    align-items: center; /* Centra verticalmente el botón y el título */
+    position: relative;
+    box-sizing: border-box; /* Importante para que el padding no rompa el ancho */
 }
+
+#btn-menu {
+    position: absolute; /* Permite moverlo a la izquierda sin romper el centrado del H1 */
+    left: 20px;
+    background: transparent;
+    border: none;
+    font-size: 28px;
+    cursor: pointer;
+    color: white;
+    padding: 0;
+}
+
+.banner h1 {
+    margin: 0 auto; /* Centra el título en el espacio restante */
+    font-size: 2.2rem;
+    letter-spacing: 5px;
+    font-weight: 300;
+}
+
+/* --- ESPACIO EN BLANCO (Forzado) --- */
+.espacio-blanco {
+    height: 25px;
+    width: 100%;
+    display: block; /* Asegura que el div ocupe espacio aunque esté vacío */
+    content: "";    /* Truco para asegurar renderizado */
+}
+
