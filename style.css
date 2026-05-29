@@ -84,14 +84,14 @@ button:disabled { background-color: #888; }
     padding-top: 60px;
 }
 #menu-lateral.abierto { left: 0; }
-#menu-lateral ul { list-style: none; padding: 0; }
-#menu-lateral li a { display: block; padding: 15px; color: white; text-decoration: none; }
+#menu-lateral ul { list-style: none; padding: 0; margin:0;}
+#menu-lateral li a { display: block; padding: 15px 25px; color: white; text-decoration: none; text-align: left; font-size: 1.1rem; }
 #menu-lateral li a:hover { background: #5a4e4a; }
 
 #btn-menu {
     position: absolute; 
     left: 15px;      /* Más a la izquierda */
-    top: 40%;        /* Se posiciona al 50% de la altura del banner */
+    top: 45%;        /* Se posiciona al 50% de la altura del banner */
     transform: translateY(-50%); /* Esto lo sube o baja para centrarlo perfecto */
     background: transparent;
     border: none;
