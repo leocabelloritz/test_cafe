@@ -67,8 +67,9 @@ function iniciarTemporizador() {
             } else {
                 const seg = Math.floor((restante / 1000) % 60);
                 const min = Math.floor((restante / 1000 / 60) % 60);
-                document.getElementById('temporizador').innerHTML = `${paso.nombre}: ${min}:${seg < 10 ? '0' : ''}${seg}`;
+                display.innerHTML = `<span class="nombre-paso">${paso.nombre}:</span> <span class="valor-tiempo">${min}:${seg < 10 ? '0' : ''}${seg}</span>`;
             }
+
         }, 500);
     }
     ejecutarPaso();
