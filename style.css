@@ -29,7 +29,7 @@ body { font-family: 'Segoe UI', sans-serif; text-align: center; padding: 0; marg
     transition: opacity 0.5s ease-in-out; /* Corregido a punto */
     opacity: 1;
 }
-#temporizador.oculto { opacity: 0; pointer-events: none; }
+#temporizador.oculto { opacity: 0 !important; pointer-events: none !important; display: none !important; }
 
 .nombre-paso { font-size: 1.2rem; font-weight: 500; }
 .valor-tiempo { font-size: 3.5rem; font-weight: bold; }
