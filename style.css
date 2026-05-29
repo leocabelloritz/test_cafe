@@ -44,6 +44,12 @@ body {
     flex-wrap: nowrap;
     color: #3B3330;
     font-size: 1.5rem;
+    transition: opacity 0,5s easy-in-out;
+}
+
+#temporizador.oculto {
+    opacity: 0;
+    pointer-events: none;
 }
 
 .nombre-paso {
