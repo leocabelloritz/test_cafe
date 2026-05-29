@@ -43,6 +43,31 @@ function iniciarTemporizador() {
     const configMetodo = CONFIG[metodo];
     const display = document.getElementById('temporizador');
 
+    if (restante <= 0) {
+    clearInterval(temporizadorActual);
+    dispararAlerta();
+                
+                // --- AQUÍ APLICAMOS TU LÓGICA DE CONTROL ---
+    if (pasos[pasoActual].nombre === "Bloom") {
+    const continuar = confirm("¿Bloom terminado? Presiona Aceptar para continuar con la infusión.");
+    if (!continuar) {
+    cancelarTemporizador();
+    return;
+     }
+   }
+                // -------------------------------------------
+
+    pasoActual++;
+                
+                
+    if (pasoActual < pasos.length) {
+    ejecutarPaso(); 
+     } else {
+    finalizarTemporizador();
+    alert("¡Café listo para servir!");
+     }
+    }
+
     if (metodo === 'moka') {
         alert("¡Atención! Observa el flujo. Saca del fuego antes de que salga con violencia.");
         return;
