@@ -90,4 +90,8 @@ button {
     border-radius: 15px; /* Bordes más redondeados */
     background: rgba(255,255,255,0.05); /* Un toque más suave */
 }
+.espacio {
+    height: 40px; /* Ajusta este número: más grande = más aire */
+    width: 100%;
+}
 
