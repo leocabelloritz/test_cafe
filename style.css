@@ -38,6 +38,7 @@ body {
     color: #3B3330;
     font-size: 1.5rem;
     transition: opacity 0,5s easy-in-out;
+    opacity: 1;
 }
 
 #temporizador.oculto {
