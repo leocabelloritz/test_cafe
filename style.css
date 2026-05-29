@@ -12,16 +12,40 @@ button { padding: 15px 30px; font-size: 1.2rem; cursor: pointer; border-radius: 
 button:disabled { background-color: #888; }
 .opciones-extra { margin: 20px 0; border: 1px solid #ddd; padding: 15px; border-radius: 10px; background: rgba(255,255,255,0.1); }
 .input-group { margin-bottom: 15px; }
+/* ... tu código previo ... */
+
+/* ESTO ES LO QUE TE FALTABA */
+#menu-lateral {
+    position: fixed;
+    top: 0;
+    left: -250px; /* IMPORTANTE: Esto lo saca de la pantalla */
+    width: 250px;
+    height: 100%;
+    background: #3B3330; /* Color café oscuro para combinar */
+    color: white;
+    transition: 0.3s;
+    z-index: 1000;
+    padding-top: 60px; /* Para que no choque con el botón */
+}
+
+/* Para que los enlaces del menú se vean bien */
+#menu-lateral ul { list-style: none; padding: 0; }
+#menu-lateral li a { 
+    display: block; padding: 15px; color: white; text-decoration: none; 
+}
+#menu-lateral li a:hover { background: #5a4e4a; }
+
+/* Aseguramos que el botón no sea afectado por el text-align: center del body */
 #btn-menu {
-    position: fixed; /* Se queda fijo aunque hagas scroll */
-    top: 20px;       /* Distancia desde arriba */
-    left: 20px;      /* Distancia desde la izquierda */
-    z-index: 1001;   /* Asegura que siempre esté por encima del menú */
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 1001;
     background: transparent;
     border: none;
-    font-size: 30px; /* Tamaño del icono */
+    font-size: 30px;
     cursor: pointer;
-    color: #333;     /* Ajusta según el color de fondo de tu app */
+    color: #3B3330; /* Color oscuro para que contraste con el fondo claro */
 }
 
 
