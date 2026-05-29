@@ -38,8 +38,8 @@ button:disabled { background-color: #888; }
 /* Aseguramos que el botón no sea afectado por el text-align: center del body */
 #btn-menu {
     position: fixed;
-    top: 20px;
-    left: 20px;
+    top: 10px;
+    left: 10px;
     z-index: 1001;
     background: transparent;
     border: none;
