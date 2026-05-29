@@ -54,7 +54,7 @@ function iniciarTemporizador() {
                 
                 // AQUÍ ocurre la transición
                 if (paso.nombre === "Bloom") {
-                    if (!confirm("¿Bloom terminado? Acepta para seguir.")) { cancelarTemporizador(); return; }
+                    if (!confirm("Bloom terminado, preparate para el vertido.")) { cancelarTemporizador(); return; }
                 }
 
                 pasoActual++;
