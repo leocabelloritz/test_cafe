@@ -2,26 +2,48 @@
 body { 
     font-family: 'Segoe UI', sans-serif; 
     text-align: center; 
-    padding: 20px; 
+    padding: 0; /* Padding a 0 para que el banner sea de ancho completo */
+    margin: 0;
     background-color: #C5AB9F; 
     color: #3B3330; 
 }
 
-h1 {
-    margin-top: 5px;
-    margin-bottom: 10px;
+/* --- BANNER DE CABECERA (Nuevo) --- */
+.banner {
+    background-color: #3B3330;
+    color: #FFFFFF;
+    padding: 20px 0;
+    width: 100%;
+    margin-bottom: 25px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-/* --- TEMPORIZADOR (Corregido y unificado) --- */
+.banner h1 {
+    margin: 0;
+    font-size: 2.2rem;
+    letter-spacing: 5px;
+    font-weight: 300;
+}
+
+/* --- TEMPORIZADOR Y CONTENEDORES (Ajustados con margen lateral) --- */
+#temporizador, .opciones-extra, #btn-iniciar, #metodo, label {
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
 #temporizador {
     display: flex;
     justify-content: center;
     align-items: baseline;
-    margin: 30px 0;
+    margin-top: 30px;
+    margin-bottom: 30px;
     gap: 15px;
     flex-wrap: nowrap;
     color: #3B3330;
-    font-size: 1.5rem; /* Tamaño base */
+    font-size: 1.5rem;
 }
 
 .nombre-paso {
@@ -31,7 +53,7 @@ h1 {
 }
 
 .valor-tiempo {
-    font-size: 3.5rem; /* Números grandes y protagonistas */
+    font-size: 3.5rem;
     font-weight: bold;
 }
 
@@ -68,14 +90,14 @@ button:disabled { background-color: #888; }
 
 #btn-menu {
     position: fixed;
-    top: 5px;
-    left: 1px;
+    top: 15px; /* Ajustado para que no choque con el nuevo banner */
+    left: 10px;
     z-index: 1001;
     background: transparent;
     border: none;
     font-size: 30px;
     cursor: pointer;
-    color: #3B3330;
+    color: white; /* Cambiado a blanco para que resalte sobre el banner */
 }
 
 #overlay {
@@ -89,31 +111,24 @@ button:disabled { background-color: #888; }
     z-index: 999;
 }
 
-/* --- CAJAS DE OPCIONES --- */
+/* --- CAJAS DE OPCIONES Y ESPACIADO --- */
 .opciones-extra {
-    margin: 20px 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
     padding: 20px;
     border: 1px solid rgba(0,0,0,0.1);
     border-radius: 15px;
     background: rgba(255,255,255,0.1);
 }
-.espacio { height: 10px; width: 100%; }
-.espacio-blanco { height: 25px; width: 100%;}
 
-/banner UMBRA
-.banner {
-    background-color: #3B3330; /* El color oscuro que ya usas */
-    color: #FFFFFF;            /* Letras blancas para contraste */
-    padding: 20px 0;           /* Espacio arriba y abajo del texto */
-    margin-bottom: 25px;       /* Espacio antes del temporizador */
-    box-shadow: 0 4px 6px rgba(0,0,0,0.2); /* Una sombra suave para profundidad */
-    text-align: center;
+.control-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 15px;
 }
 
-.banner h1 {
-    margin: 0;
-    font-size: 2.5rem;         /* Letra grande y llamativa */
-    letter-spacing: 5px;       /* Un toque moderno */
-    font-weight: 300;          /* Estilo más fino y elegante */
+.espacio-blanco {
+    height: 25px; 
+    width: 100%;
 }
-
