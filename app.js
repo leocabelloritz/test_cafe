@@ -104,11 +104,7 @@ function mostrarOpciones() {
 
     // Muestra las opciones del método
     div.style.display = (metodo === 'francesa') ? 'block' : 'none';
-
-    // Lógica para mostrar el temporizador
-    if (metodo) {
-        temporizador.classList.remove('oculto');
-    }
+    temporizador.classList.remove('oculto');
 }
 
 
