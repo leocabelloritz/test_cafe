@@ -1,169 +1,47 @@
 /* --- ESTILOS GENERALES --- */
-body { 
-    font-family: 'Segoe UI', sans-serif; 
-    text-align: center; 
-    padding: 0; /* Padding a 0 para que el banner sea de ancho completo */
-    margin: 0;
-    background-color: #C5AB9F; 
-    color: #3B3330; 
-}
+body { font-family: 'Segoe UI', sans-serif; text-align: center; padding: 0; margin: 0; background-color: #C5AB9F; color: #3B3330; }
 
-/* --- BANNER DE CABECERA (Nuevo) --- */
+/* --- BANNER --- */
 .banner {
     background-color: #3B3330;
     color: #FFFFFF;
-    padding: 20px 0;
+    padding: 15px 20px;
     width: 100%;
     margin-bottom: 25px;
     box-shadow: 0 4px 6px rgba(0,0,0,0.2);
     display: flex;
-    justify-content: center;
     align-items: center;
+    position: relative;
+    box-sizing: border-box;
 }
 
-/* --- TEMPORIZADOR Y CONTENEDORES (Ajustados con margen lateral) --- */
-#temporizador, .opciones-extra, #btn-iniciar, #metodo, label {
-    margin-left: 20px;
-    margin-right: 20px;
+.banner h1 { margin: 0 auto; font-size: 2.2rem; letter-spacing: 5px; font-weight: 300; }
+
+#btn-menu {
+    position: absolute; left: 20px; background: transparent; border: none; font-size: 28px; 
+    cursor: pointer; color: white; padding: 0; line-height: 1;
 }
 
+/* --- TEMPORIZADOR --- */
 #temporizador {
-    display: flex;
-    justify-content: center;
-    align-items: baseline;
-    margin-top: 30px;
-    margin-bottom: 30px;
-    gap: 15px;
-    flex-wrap: nowrap;
-    color: #3B3330;
-    font-size: 1.5rem;
-    transition: opacity 0,5s easy-in-out;
+    display: flex; justify-content: center; align-items: baseline; margin: 30px 20px;
+    gap: 15px; color: #3B3330; font-size: 1.5rem;
+    transition: opacity 0.5s ease-in-out; /* Corregido a punto */
     opacity: 1;
 }
+#temporizador.oculto { opacity: 0; pointer-events: none; }
 
-#temporizador.oculto {
-    opacity: 0;
-    pointer-events: none;
-}
+.nombre-paso { font-size: 1.2rem; font-weight: 500; }
+.valor-tiempo { font-size: 3.5rem; font-weight: bold; }
 
-.nombre-paso {
-    font-size: 1.2rem;
-    font-weight: 500;
-    white-space: nowrap;
-}
-
-.valor-tiempo {
-    font-size: 3.5rem;
-    font-weight: bold;
-}
-
-/* --- BOTONES --- */
-button { 
-    padding: 20px 40px; 
-    margin: 10px 0; 
-    font-size: 1.3rem; 
-    cursor: pointer; 
-    border-radius: 12px; 
-    border: none; 
-    background-color: #3B3330; 
-    color: white; 
-}
-button:disabled { background-color: #888; }
-
-/* --- MENÚ LATERAL --- */
-#menu-lateral {
-    position: fixed;
-    top: 0;
-    left: -250px;
-    width: 250px;
-    height: 100%;
-    background: #3B3330;
-    color: white;
-    transition: 0.3s;
-    z-index: 1000;
-    padding-top: 60px;
-}
+/* --- RESTO --- */
+.opciones-extra, #btn-iniciar, #metodo, label { margin-left: 20px; margin-right: 20px; }
+button { padding: 20px 40px; margin: 10px 0; font-size: 1.3rem; cursor: pointer; border-radius: 12px; border: none; background-color: #3B3330; color: white; }
+.opciones-extra { margin-top: 20px; padding: 20px; border: 1px solid rgba(0,0,0,0.1); border-radius: 15px; background: rgba(255,255,255,0.1); }
+.control-group { display: flex; flex-direction: column; align-items: center; margin-bottom: 15px; }
+.espacio-blanco { height: 15px; width: 100%; display: block; }
+#menu-lateral { position: fixed; top: 0; left: -250px; width: 250px; height: 100%; background: #3B3330; color: white; transition: 0.3s; z-index: 1000; padding-top: 60px; }
 #menu-lateral.abierto { left: 0; }
-#menu-lateral ul { list-style: none; padding: 0; margin:0;}
-#menu-lateral li a { display: block; padding: 15px 25px; color: white; text-decoration: none; text-align: left; font-size: 1.1rem; }
-#menu-lateral li a:hover { background: #5a4e4a; }
-
-#btn-menu {
-    position: absolute; 
-    left: 15px;      /* Más a la izquierda */
-    top: 50%;        /* Se posiciona al 50% de la altura del banner */
-    transform: translateY(-50%); /* Esto lo sube o baja para centrarlo perfecto */
-    background: transparent;
-    border: none;
-    font-size: 32px; /* Un poquito más grande */
-    cursor: pointer;
-    color: white;
-    padding: 0;
-    line-height: 1;  /* Elimina espacios extra arriba y abajo del icono */
-}
-
-#overlay {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.4);
-    z-index: 999;
-}
-
-/* --- CAJAS DE OPCIONES Y ESPACIADO --- */
-.opciones-extra {
-    margin-top: 20px;
-    margin-bottom: 20px;
-    padding: 20px;
-    border: 1px solid rgba(0,0,0,0.1);
-    border-radius: 15px;
-    background: rgba(255,255,255,0.1);
-}
-
-.control-group {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 15px;
-}
-
-.espacio-blanco { height: 25px; width: 100%;}
-
-/* --- BANNER Y BOTÓN DE MENÚ --- */
-.banner {
-    background-color: #3B3330;
-    color: #FFFFFF;
-    padding: 15px 20px; /* Padding vertical y horizontal */
-    width: 100%;
-    margin-bottom: 25px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
-    display: flex;
-    align-items: center; /* Centra verticalmente el botón y el título */
-    position: relative;
-    box-sizing: border-box; /* Importante para que el padding no rompa el ancho */
-}
-
-#btn-menu {
-    position: absolute; /* Permite moverlo a la izquierda sin romper el centrado del H1 */
-    left: 20px;
-    background: transparent;
-    border: none;
-    font-size: 28px;
-    cursor: pointer;
-    color: white;
-    padding: 0;
-}
-
-.banner h1 {
-    margin: 0 auto; /* Centra el título en el espacio restante */
-    font-size: 2.2rem;
-    letter-spacing: 5px;
-    font-weight: 300;
-}
-
-/* --- ESPACIO EN BLANCO (Forzado) --- */
-.espacio-blanco { height:15px; width: 100%;}
-
+#menu-lateral ul { list-style: none; padding: 0; margin: 0; }
+#menu-lateral li a { display: block; padding: 15px 25px; color: white; text-decoration: none; text-align: left; }
+#overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.4); z-index: 999; }
