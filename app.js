@@ -1,14 +1,6 @@
 let temporizadorActual = null;
 let wakeLock = null;
 
-// Pedir permiso al cargar la página
-window.onload = () => {
-    if ("Notification" in window && Notification.permission !== "granted") {
-        Notification.requestPermission();
-    }
-    mostrarOpciones();
-};
-
 // Función para solicitar que la pantalla no se apague
 async function solicitarWakeLock() {
     try {
@@ -140,6 +132,12 @@ function abrirSeccion(seccion) {
     toggleMenu(); // Cierra el menú tras seleccionar
     // Aquí luego ocultaremos los divs que no corresponden y mostraremos el de la sección
 }
+window.onload = () => {
+    // 1. Pedir permisos de notificación
+    if ("Notification" in window && Notification.permission !== "granted") {
+        Notification.requestPermission();
+    }
+    // 2. Mostrar opciones iniciales
+    mostrarOpciones();
+};
 
-
-window.onload = mostrarOpciones;
