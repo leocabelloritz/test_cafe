@@ -91,7 +91,7 @@ button:disabled { background-color: #888; }
 #btn-menu {
     position: absolute; 
     left: 15px;      /* Más a la izquierda */
-    top: 50%;        /* Se posiciona al 50% de la altura del banner */
+    top: 20%;        /* Se posiciona al 50% de la altura del banner */
     transform: translateY(-50%); /* Esto lo sube o baja para centrarlo perfecto */
     background: transparent;
     border: none;
@@ -165,10 +165,5 @@ button:disabled { background-color: #888; }
 }
 
 /* --- ESPACIO EN BLANCO (Forzado) --- */
-.espacio-blanco {
-    height: 10px;
-    width: 100%;
-    display: block; /* Asegura que el div ocupe espacio aunque esté vacío */
-    content: "";    /* Truco para asegurar renderizado */
-}
+.espacio-blanco { height:25px; width: 100%;}
 
