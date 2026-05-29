@@ -32,6 +32,7 @@
 </nav>
 
     <label for="metodo">Elige tu método:</label><br>
+    <div class="espacio"></div>⁠
     <select id="metodo" onchange="mostrarOpciones()">
         <option value="v60">V60</option>
         <option value="francesa">Prensa Francesa</option>
@@ -42,12 +43,14 @@
 
     <div id="opciones-francesa" class="opciones-extra" style="display: none;">
         <label>Tipo de molino:</label><br>
+        <div class="espacio"></div>⁠
         <select id="molino" onchange="actualizarMolienda()">
             <option value="manual">Manual (10-11)</option>
             <option value="electrico">Eléctrico (30-35)</option>
         </select>
         
         <br><br><label>Intensidad (Ratio):</label><br>
+        <div class="espacio"></div>⁠
         <select id="ratio" onchange="calcularAgua()">
             <option value="16">Suave (1:16)</option>
             <option value="14">Cargado (1:14)</option>
@@ -56,8 +59,9 @@
         </select>
         
         <br><br><label>Gramos de café:</label><br>
+        <div class="espacio"></div>⁠
         <input type="number" id="gramos" value="20" onchange="calcularAgua()">
-        
+        <div class="espacio"></div>⁠
         <div id="resultado-agua">Agua necesaria: 320ml</div>
     </div>
     
