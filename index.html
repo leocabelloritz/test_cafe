@@ -48,16 +48,16 @@
         
         <div class="control-group">
             <label>Tipo de molino:</label>
+            <div class="espacio-blanco"></div>
             <select id="molino" onchange="actualizarMolienda()">
                 <option value="manual">Manual (10-11)</option>
                 <option value="electrico">Eléctrico (30-35)</option>
             </select>
         </div>
         
-        <div class="espacio-blanco"></div>
-        
         <div class="control-group">
             <label>Intensidad (Ratio):</label>
+            <div class="espacio-blanco"></div>
             <select id="ratio" onchange="calcularAgua()">
                 <option value="16">Suave (1:16)</option>
                 <option value="14">Cargado (1:14)</option>
@@ -65,15 +65,12 @@
                 <option value="10">Concentrado (1:10)</option>
             </select>
         </div>
-        
-        <div class="espacio-blanco"></div>
 
         <div class="control-group">
             <label>Gramos de café:</label>
+            <div class="espacio-blanco"></div>
             <input type="number" id="gramos" value="20" onchange="calcularAgua()">
         </div>
-        
-        <div class="espacio-blanco"></div>
 
         <div id="resultado-agua" class="resultado">Agua necesaria: 320ml</div>
     </div>
