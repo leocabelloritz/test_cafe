@@ -12,17 +12,18 @@ button { padding: 15px 30px; font-size: 1.2rem; cursor: pointer; border-radius: 
 button:disabled { background-color: #888; }
 .opciones-extra { margin: 20px 0; border: 1px solid #ddd; padding: 15px; border-radius: 10px; background: rgba(255,255,255,0.1); }
 .input-group { margin-bottom: 15px; }
-#menu-lateral {
-    position: fixed;
-    top: 0;
-    left: -250px; /* Oculto fuera de pantalla */
-    width: 250px;
-    height: 100%;
-    background: #333;
-    color: white;
-    transition: 0.3s;
-    z-index: 1000;
+#btn-menu {
+    position: fixed; /* Se queda fijo aunque hagas scroll */
+    top: 20px;       /* Distancia desde arriba */
+    left: 20px;      /* Distancia desde la izquierda */
+    z-index: 1001;   /* Asegura que siempre esté por encima del menú */
+    background: transparent;
+    border: none;
+    font-size: 30px; /* Tamaño del icono */
+    cursor: pointer;
+    color: #333;     /* Ajusta según el color de fondo de tu app */
 }
+
 
 #menu-lateral.abierto {
     left: 0;
