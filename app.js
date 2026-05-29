@@ -40,9 +40,7 @@ function dispararAlerta() {
 
 function iniciarTemporizador() {
     // Solicitar pantalla completa al iniciar
-if (document.documentElement.requestFullscreen) {
-    document.documentElement.requestFullscreen();
-}
+if (document.documentElement.requestFullscreen)
     const metodo = document.getElementById('metodo').value;
     const configMetodo = CONFIG[metodo];
     const display = document.getElementById('temporizador');
