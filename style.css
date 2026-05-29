@@ -89,15 +89,17 @@ button:disabled { background-color: #888; }
 #menu-lateral li a:hover { background: #5a4e4a; }
 
 #btn-menu {
-    position: fixed;
-    top: 15px; /* Ajustado para que no choque con el nuevo banner */
-    left: 10px;
-    z-index: 1001;
+    position: absolute; 
+    left: 15px;      /* Más a la izquierda */
+    top: 50%;        /* Se posiciona al 50% de la altura del banner */
+    transform: translateY(-50%); /* Esto lo sube o baja para centrarlo perfecto */
     background: transparent;
     border: none;
-    font-size: 30px;
+    font-size: 32px; /* Un poquito más grande */
     cursor: pointer;
-    color: white; /* Cambiado a blanco para que resalte sobre el banner */
+    color: white;
+    padding: 0;
+    line-height: 1;  /* Elimina espacios extra arriba y abajo del icono */
 }
 
 #overlay {
@@ -164,7 +166,7 @@ button:disabled { background-color: #888; }
 
 /* --- ESPACIO EN BLANCO (Forzado) --- */
 .espacio-blanco {
-    height: 25px;
+    height: 10px;
     width: 100%;
     display: block; /* Asegura que el div ocupe espacio aunque esté vacío */
     content: "";    /* Truco para asegurar renderizado */
