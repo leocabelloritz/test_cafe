@@ -11,11 +11,13 @@
     <script>var vConsole = new window.VConsole();</script>
 </head>
 <body>
-    <button id="btn-menu" onclick="toggleMenu()">☰</button>
-    
+
     <header class="banner">
-    <h1>UMBRA</h1>
-</header>
+        <!-- El botón ahora vive dentro del banner para que sea parte de la misma franja -->
+        <button id="btn-menu" onclick="toggleMenu()">☰</button>
+        <h1>UMBRA</h1>
+    </header>
+
     <div id="temporizador">00:00</div>
 
     <nav id="menu-lateral" class="menu-cerrado">
