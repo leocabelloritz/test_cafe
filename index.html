@@ -9,6 +9,17 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <button id="btn-menu" onclick="toggleMenu()">☰</button>
+
+<nav id="menu-lateral" class="menu-cerrado">
+    <ul>
+        <li><a href="#" onclick="abrirSeccion('temporizador')">Temporizador</a></li>
+        <li><a href="#" onclick="abrirSeccion('bitacora')">Mi Bitácora</a></li>
+        <li><a href="#" onclick="abrirSeccion('ajustes')">Ajustes</a></li>
+    </ul>
+</nav>
+
+<div id="overlay" onclick="toggleMenu()"></div>
     <h1>CAFÉ</h1>
     
     <div id="temporizador">00:00</div>
