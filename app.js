@@ -102,11 +102,12 @@ function mostrarOpciones() {
     const div = document.getElementById('opciones-francesa');
     const temporizador = document.getElementById('temporizador');
 
-    // Muestra las opciones del método
+    // Muestra opciones si es francesa
     div.style.display = (metodo === 'francesa') ? 'block' : 'none';
+
+    // ELIMINA la clase 'oculto' para que aparezca
     temporizador.classList.remove('oculto');
 }
-
 
 function toggleMenu() {
     const menu = document.getElementById('menu-lateral');
