@@ -78,15 +78,15 @@ h1 {
 
 /* 3. Botones con mejor área de toque (padding) y separación (margin) */
 button {
-    padding: 18px 40px;  /* Botón más grande y fácil de presionar */
-    margin: 30px 0;      /* Margen mayor para que respire */
+    padding: 20px 40px;  /* Botón más grande y fácil de presionar */
+    margin: 50px 0;      /* Margen mayor para que respire */
     font-size: 1.3rem;
 }
 
 /* 4. Caja de opciones (Prensa Francesa/Té) más cómoda */
 .opciones-extra {
-    margin: 40px 20px;   /* Margen externo, con un poco de aire lateral */
-    padding: 30px;       /* Mucho más aire interno */
+    margin: 50px 20px;   /* Margen externo, con un poco de aire lateral */
+    padding: 40px;       /* Mucho más aire interno */
     border-radius: 15px; /* Bordes más redondeados */
     background: rgba(255,255,255,0.05); /* Un toque más suave */
 }
