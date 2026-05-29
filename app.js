@@ -128,6 +128,18 @@ function actualizarMolienda() {
     // Por ahora, solo es una función vacía para evitar errores
     console.log("Molienda actualizada");
 }
+function toggleMenu() {
+    const menu = document.getElementById('menu-lateral');
+    const overlay = document.getElementById('overlay');
+    menu.classList.toggle('abierto');
+    overlay.style.display = menu.classList.contains('abierto') ? 'block' : 'none';
+}
+
+function abrirSeccion(seccion) {
+    console.log("Navegando a: " + seccion);
+    toggleMenu(); // Cierra el menú tras seleccionar
+    // Aquí luego ocultaremos los divs que no corresponden y mostraremos el de la sección
+}
 
 
 window.onload = mostrarOpciones;
