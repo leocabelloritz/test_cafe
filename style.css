@@ -21,13 +21,6 @@ body {
     align-items: center;
 }
 
-.banner h1 {
-    margin: 0;
-    font-size: 2.2rem;
-    letter-spacing: 5px;
-    font-weight: 300;
-}
-
 /* --- TEMPORIZADOR Y CONTENEDORES (Ajustados con margen lateral) --- */
 #temporizador, .opciones-extra, #btn-iniciar, #metodo, label {
     margin-left: 20px;
@@ -97,7 +90,7 @@ button:disabled { background-color: #888; }
 #btn-menu {
     position: absolute; 
     left: 15px;      /* Más a la izquierda */
-    top: 40%;        /* Se posiciona al 50% de la altura del banner */
+    top: 35%;        /* Se posiciona al 50% de la altura del banner */
     transform: translateY(-50%); /* Esto lo sube o baja para centrarlo perfecto */
     background: transparent;
     border: none;
