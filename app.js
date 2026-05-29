@@ -100,8 +100,17 @@ function calcularAgua() {
 function mostrarOpciones() {
     const metodo = document.getElementById('metodo').value;
     const div = document.getElementById('opciones-francesa');
-    if (div) div.style.display = (metodo === 'francesa') ? 'block' : 'none';
+    const temporizador = document.getElementById('temporizador');
+
+    // Muestra las opciones del método
+    div.style.display = (metodo === 'francesa') ? 'block' : 'none';
+
+    // Lógica para mostrar el temporizador
+    if (metodo) {
+        temporizador.classList.remove('oculto');
+    }
 }
+
 
 function toggleMenu() {
     const menu = document.getElementById('menu-lateral');
