@@ -1,42 +1,71 @@
-/* style.css */
+/* --- ESTILOS GENERALES --- */
 body { 
     font-family: 'Segoe UI', sans-serif; 
     text-align: center; 
     padding: 20px; 
     background-color: #C5AB9F; 
     color: #3B3330; 
-
 }
 
-#temporizador { font-size: 3rem; margin: 30px 0; font-weight: bold; }
-button { padding: 10px 15px; font-size: 1rem; cursor: pointer; border-radius: 8px; border: none; background-color: #3B3330; color: white; }
-button:disabled { background-color: #888; }
-.opciones-extra { margin: 30px 0; border: 1px solid #ddd; padding: 15px; border-radius: 10px; background: rgba(255,255,255,0.1); }
-.input-group { margin-bottom:20px; }
-/* ... tu código previo ... */
+h1 {
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
 
-/* ESTO ES LO QUE TE FALTABA */
+/* --- TEMPORIZADOR (Corregido y unificado) --- */
+#temporizador {
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    margin: 30px 0;
+    gap: 15px;
+    flex-wrap: nowrap;
+    color: #3B3330;
+    font-size: 1.5rem; /* Tamaño base */
+}
+
+.nombre-paso {
+    font-size: 1.2rem;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.valor-tiempo {
+    font-size: 3.5rem; /* Números grandes y protagonistas */
+    font-weight: bold;
+}
+
+/* --- BOTONES --- */
+button { 
+    padding: 20px 40px; 
+    margin: 10px 0; 
+    font-size: 1.3rem; 
+    cursor: pointer; 
+    border-radius: 12px; 
+    border: none; 
+    background-color: #3B3330; 
+    color: white; 
+}
+button:disabled { background-color: #888; }
+
+/* --- MENÚ LATERAL --- */
 #menu-lateral {
     position: fixed;
     top: 0;
-    left: -250px; /* IMPORTANTE: Esto lo saca de la pantalla */
+    left: -250px;
     width: 250px;
     height: 100%;
-    background: #3B3330; /* Color café oscuro para combinar */
+    background: #3B3330;
     color: white;
     transition: 0.3s;
     z-index: 1000;
-    padding-top: 60px; /* Para que no choque con el botón */
+    padding-top: 60px;
 }
-
-/* Para que los enlaces del menú se vean bien */
+#menu-lateral.abierto { left: 0; }
 #menu-lateral ul { list-style: none; padding: 0; }
-#menu-lateral li a { 
-    display: block; padding: 15px; color: white; text-decoration: none; 
-}
+#menu-lateral li a { display: block; padding: 15px; color: white; text-decoration: none; }
 #menu-lateral li a:hover { background: #5a4e4a; }
 
-/* Aseguramos que el botón no sea afectado por el text-align: center del body */
 #btn-menu {
     position: fixed;
     top: 5px;
@@ -46,72 +75,26 @@ button:disabled { background-color: #888; }
     border: none;
     font-size: 30px;
     cursor: pointer;
-    color: #3B3330; /* Color oscuro para que contraste con el fondo claro */
-}
-
-
-#menu-lateral.abierto {
-    left: 0;
+    color: #3B3330;
 }
 
 #overlay {
-    display: none;       /* Oculto por defecto */
+    display: none;
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0,0,0,0.4); /* Fondo oscuro semitransparente */
-    z-index: 999;        /* Debajo del menú (que tiene 1000) pero encima de todo lo demás */
+    background: rgba(0,0,0,0.4);
+    z-index: 999;
 }
 
-
-/* 1. Más espacio arriba y abajo del título */
-h1 {
-    margin-top: 5px;    /* Más espacio al inicio */
-    margin-bottom: 10px; /* Más espacio antes del temporizador */
-}
-
-#temporizador {
-    display: flex;            /* Activamos flexbox */
-    justify-content: center;  /* Centramos todo */
-    align-items: baseline;    /* Alinea el texto del paso y el reloj por su base, ideal para tamaños distintos */
-    font-size: 1.5rem;        /* Reducimos un poco el tamaño global para que quepa mejor */
-    margin: 30px 0;
-    gap: 10px;                /* Espacio entre el nombre del paso y el reloj */
-    flex-wrap: nowrap;        /* Evitamos que salte de línea */
-}
-
-/* Si quieres que el reloj destaque pero el paso sea más sutil */
-.nombre-paso {
-    font-size: 1rem;          /* Más pequeño que el reloj */
-    font-weight: normal;      /* Más delgado */
-    color: #666;              /* Un tono un poco más suave */
-    white-space: nowrap;      /* Evita que la palabra "Vertido" se parta en dos */
-}
-
-.valor-tiempo {
-    font-size: 2.5rem;        /* El número sigue siendo protagonista */
-    font-weight: bold;
-}
-
-
-/* 3. Botones con mejor área de toque (padding) y separación (margin) */
-button {
-    padding: 20px 40px;  /* Botón más grande y fácil de presionar */
-    margin: 10px 0;      /* Margen mayor para que respire */
-    font-size: 1.3rem;
-}
-
-/* 4. Caja de opciones (Prensa Francesa/Té) más cómoda */
+/* --- CAJAS DE OPCIONES --- */
 .opciones-extra {
-    margin: 20px 20px;   /* Margen externo, con un poco de aire lateral */
-    padding: 20px;       /* Mucho más aire interno */
-    border-radius: 15px; /* Bordes más redondeados */
-    background: rgba(255,255,255,0.05); /* Un toque más suave */
+    margin: 20px 20px;
+    padding: 20px;
+    border: 1px solid rgba(0,0,0,0.1);
+    border-radius: 15px;
+    background: rgba(255,255,255,0.1);
 }
-.espacio {
-    height: 10px; /* Ajusta este número: más grande = más aire */
-    width: 50%;
-}
-
+.espacio { height: 10px; width: 100%; }
