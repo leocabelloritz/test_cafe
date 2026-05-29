@@ -63,7 +63,31 @@ button:disabled { background-color: #888; }
     height: 100%;
     background: rgba(0,0,0,0.5);
 }
-.__vc {
-    height: 20% !important;
+
+/* 1. Más espacio arriba y abajo del título */
+h1 {
+    margin-top: 80px;    /* Más espacio al inicio */
+    margin-bottom: 50px; /* Más espacio antes del temporizador */
+}
+
+/* 2. Temporizador más holgado */
+#temporizador {
+    font-size: 3.5rem;   /* Un poquito más grande */
+    margin: 40px 0;      /* Separación clara */
+}
+
+/* 3. Botones con mejor área de toque (padding) y separación (margin) */
+button {
+    padding: 18px 40px;  /* Botón más grande y fácil de presionar */
+    margin: 30px 0;      /* Margen mayor para que respire */
+    font-size: 1.3rem;
+}
+
+/* 4. Caja de opciones (Prensa Francesa/Té) más cómoda */
+.opciones-extra {
+    margin: 40px 20px;   /* Margen externo, con un poco de aire lateral */
+    padding: 30px;       /* Mucho más aire interno */
+    border-radius: 15px; /* Bordes más redondeados */
+    background: rgba(255,255,255,0.05); /* Un toque más suave */
 }
 
