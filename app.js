@@ -30,20 +30,108 @@ function dispararAlerta() {
     }
 }
 
+// --- VARIABLES GLOBALES ---
+let temporizadorActual = null;
+let wakeLock = null;
+let esTemporizadorCorriendo = false; // Control de estado
+
+// --- FUNCIONES DE CONTROL ---
+
 function iniciarTemporizador() {
-    // Solicitar pantalla completa al iniciar
-if (document.documentElement.requestFullscreen){
-    document.documentElement.requestFullscreen();
+    const boton = document.getElementById('btn-iniciar');
+    
+    // Si ya está corriendo, lo cancelamos (modo interruptor)
+    if (esTemporizadorCorriendo) {
+        cancelarTemporizador();
+        return;
     }
+
+    // Solicitar pantalla completa
+    if (document.documentElement.requestFullscreen) {
+        document.documentElement.requestFullscreen();
+    }
+    
     const metodo = document.getElementById('metodo').value;
     const configMetodo = CONFIG[metodo];
     const display = document.getElementById('temporizador');
-    const boton = document.querySelector('button');
 
     if (metodo === 'moka') {
         alert("¡Atención! Observa el flujo. Saca del fuego antes de que salga con violencia.");
         return;
     }
+
+    // Configurar estado inicial
+    esTemporizadorCorriendo = true;
+    boton.innerText = "Cancelar Infusión";
+    boton.style.backgroundColor = "#B22222"; // Rojo
+
+    solicitarWakeLock();
+
+    let pasos = configMetodo.pasos;
+    let pasoActual = 0;
+
+    function ejecutarPaso() {
+        if (!esTemporizadorCorriendo) return;
+
+        if (pasoActual >= pasos.length) {
+            finalizarTemporizador();
+            alert("¡Café listo para servir!");
+            return;
+        }
+
+        const paso = pasos[pasoActual];
+        const duracionMs = paso.tiempo * 1000;
+        const tiempoFinal = Date.now() + duracionMs;
+
+        temporizadorActual = setInterval(() => {
+            // Verificar si el usuario canceló en medio de un paso
+            if (!esTemporizadorCorriendo) {
+                clearInterval(temporizadorActual);
+                return;
+            }
+
+            const restante = tiempoFinal - Date.now();
+
+            if (restante <= 0) {
+                clearInterval(temporizadorActual);
+                dispararAlerta();
+                pasoActual++;
+                
+                if (pasoActual < pasos.length) {
+                    alert(`¡${paso.nombre} terminado!`);
+                    ejecutarPaso(); 
+                } else {
+                    finalizarTemporizador();
+                    alert("¡Café listo para servir!");
+                }
+            } else {
+                const min = Math.floor((restante / 1000 / 60) % 60);
+                const seg = Math.floor((restante / 1000) % 60);
+                display.innerHTML = `${paso.nombre}: ${min}:${seg < 10 ? '0' : ''}${seg}`;
+            }
+        }, 500);
+    }
+
+    ejecutarPaso();
+}
+
+function cancelarTemporizador() {
+    esTemporizadorCorriendo = false;
+    if (temporizadorActual) clearInterval(temporizadorActual);
+    if (wakeLock !== null) wakeLock.release();
+    
+    document.getElementById('btn-iniciar').innerText = "Iniciar Infusión";
+    document.getElementById('btn-iniciar').style.backgroundColor = "#3B3330"; // Color original
+    document.getElementById('temporizador').innerHTML = "0:00";
+}
+
+function finalizarTemporizador() {
+    esTemporizadorCorriendo = false;
+    document.getElementById('btn-iniciar').innerText = "Iniciar Infusión";
+    document.getElementById('btn-iniciar').style.backgroundColor = "#3B3330";
+    document.getElementById('temporizador').innerHTML = "0:00";
+    if (wakeLock !== null) wakeLock.release();
+}
 
     if (temporizadorActual) clearInterval(temporizadorActual);
     
