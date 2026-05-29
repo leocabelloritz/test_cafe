@@ -66,8 +66,8 @@ button:disabled { background-color: #888; }
 
 /* 1. Más espacio arriba y abajo del título */
 h1 {
-    margin-top: 60px;    /* Más espacio al inicio */
-    margin-bottom: 40px; /* Más espacio antes del temporizador */
+    margin-top: 20px;    /* Más espacio al inicio */
+    margin-bottom: 20px; /* Más espacio antes del temporizador */
 }
 
 /* 2. Temporizador más holgado */
@@ -91,7 +91,7 @@ button {
     background: rgba(255,255,255,0.05); /* Un toque más suave */
 }
 .espacio {
-    height: 20px; /* Ajusta este número: más grande = más aire */
-    width: 100%;
+    height: 10px; /* Ajusta este número: más grande = más aire */
+    width: 50%;
 }
 
