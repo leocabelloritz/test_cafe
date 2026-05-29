@@ -50,10 +50,8 @@
             </select>
         </div>
         
-        <div class="espacio-blanco"></div> {
-    height: 25px; /* Ajusta este valor para dar más o menos espacio */
-    width: 100%;
-}
+        <div class="espacio-blanco"></div>
+        
         <div class="control-group">
             <label>Intensidad (Ratio):</label>
             <select id="ratio" onchange="calcularAgua()">
@@ -64,11 +62,15 @@
             </select>
         </div>
         
+        <div class="espacio-blanco"></div>
+
         <div class="control-group">
             <label>Gramos de café:</label>
             <input type="number" id="gramos" value="20" onchange="calcularAgua()">
         </div>
         
+        <div class="espacio-blanco"></div>
+
         <div id="resultado-agua" class="resultado">Agua necesaria: 320ml</div>
     </div>
     
