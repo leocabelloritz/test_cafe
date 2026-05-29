@@ -102,12 +102,16 @@ function mostrarOpciones() {
     const div = document.getElementById('opciones-francesa');
     const temporizador = document.getElementById('temporizador');
 
-    // Muestra opciones si es francesa
+    // 1. Lógica de las opciones
     div.style.display = (metodo === 'francesa') ? 'block' : 'none';
 
-    // ELIMINA la clase 'oculto' para que aparezca
-    temporizador.classList.remove('oculto');
+    // 2. Lógica del temporizador: 
+    // Solo lo mostramos si el usuario ha seleccionado algo real
+    if (metodo) {
+        temporizador.classList.remove('oculto');
+    }
 }
+
 
 function toggleMenu() {
     const menu = document.getElementById('menu-lateral');
