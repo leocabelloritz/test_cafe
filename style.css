@@ -72,11 +72,29 @@ h1 {
     margin-bottom: 10px; /* Más espacio antes del temporizador */
 }
 
-/* 2. Temporizador más holgado */
 #temporizador {
-    font-size: 3.5rem;   /* Un poquito más grande */
-    margin: 40px 0;      /* Separación clara */
+    display: flex;            /* Activamos flexbox */
+    justify-content: center;  /* Centramos todo */
+    align-items: baseline;    /* Alinea el texto del paso y el reloj por su base, ideal para tamaños distintos */
+    font-size: 1.5rem;        /* Reducimos un poco el tamaño global para que quepa mejor */
+    margin: 30px 0;
+    gap: 10px;                /* Espacio entre el nombre del paso y el reloj */
+    flex-wrap: nowrap;        /* Evitamos que salte de línea */
 }
+
+/* Si quieres que el reloj destaque pero el paso sea más sutil */
+.nombre-paso {
+    font-size: 1rem;          /* Más pequeño que el reloj */
+    font-weight: normal;      /* Más delgado */
+    color: #666;              /* Un tono un poco más suave */
+    white-space: nowrap;      /* Evita que la palabra "Vertido" se parta en dos */
+}
+
+.valor-tiempo {
+    font-size: 2.5rem;        /* El número sigue siendo protagonista */
+    font-weight: bold;
+}
+
 
 /* 3. Botones con mejor área de toque (padding) y separación (margin) */
 button {
