@@ -105,13 +105,10 @@ function mostrarOpciones() {
     // 1. Lógica de las opciones
     div.style.display = (metodo === 'francesa') ? 'block' : 'none';
 
-    // 2. Lógica del temporizador: 
-    // Solo lo mostramos si el usuario ha seleccionado algo real
-    if (metodo) {
-        temporizador.classList.remove('oculto');
-    }
+    // 2. Solo quitar 'oculto' si el usuario realmente ha interactuado
+    // (Opcional: Si quieres que aparezca al cambiar el select, esto está bien)
+    temporizador.classList.remove('oculto');
 }
-
 
 function toggleMenu() {
     const menu = document.getElementById('menu-lateral');
@@ -121,6 +118,9 @@ function toggleMenu() {
 }
 
 window.onload = () => {
-    if ("Notification" in window && Notification.permission !== "granted") Notification.requestPermission();
-    mostrarOpciones();
+    if ("Notification" in window && Notification.permission !== "granted") {
+        Notification.requestPermission();
+    }
+    // Borramos mostrarOpciones() de aquí para que no se fuerce al inicio
 };
+
