@@ -16,7 +16,6 @@ function dispararAlerta() {
 }
 
 // --- LÓGICA DEL TEMPORIZADOR ---
-
 function iniciarTemporizador() {
     const boton = document.getElementById('btn-iniciar');
     if (esTemporizadorCorriendo) { cancelarTemporizador(); return; }
@@ -39,10 +38,7 @@ function iniciarTemporizador() {
 
     function ejecutarPaso() {
         if (!esTemporizadorCorriendo) return;
-        
-        // Definición de display para actualizar el DOM
         const display = document.getElementById('temporizador');
-
         const paso = pasos[pasoActual];
         const tiempoFinal = Date.now() + (paso.tiempo * 1000);
 
@@ -55,12 +51,8 @@ function iniciarTemporizador() {
                 clearInterval(temporizadorActual);
                 dispararAlerta();
                 
-                // Transición con confirmación
                 if (paso.nombre === "Bloom") {
-                    if (!confirm("Bloom terminado, preparate para el vertido.")) { 
-                        cancelarTemporizador(); 
-                        return; 
-                    }
+                    if (!confirm("Bloom terminado, prepara el vertido.")) { cancelarTemporizador(); return; }
                 }
 
                 pasoActual++;
@@ -73,7 +65,6 @@ function iniciarTemporizador() {
             } else {
                 const seg = Math.floor((restante / 1000) % 60);
                 const min = Math.floor((restante / 1000 / 60) % 60);
-                // Formateo con clases CSS para evitar saltos de texto
                 display.innerHTML = `<span class="nombre-paso">${paso.nombre}:</span> <span class="valor-tiempo">${min}:${seg < 10 ? '0' : ''}${seg}</span>`;
             }
         }, 500);
@@ -108,4 +99,18 @@ function calcularAgua() {
 
 function mostrarOpciones() {
     const metodo = document.getElementById('metodo').value;
-    const div = document.getElementById('op
+    const div = document.getElementById('opciones-francesa');
+    if (div) div.style.display = (metodo === 'francesa') ? 'block' : 'none';
+}
+
+function toggleMenu() {
+    const menu = document.getElementById('menu-lateral');
+    const overlay = document.getElementById('overlay');
+    menu.classList.toggle('abierto');
+    overlay.style.display = menu.classList.contains('abierto') ? 'block' : 'none';
+}
+
+window.onload = () => {
+    if ("Notification" in window && Notification.permission !== "granted") Notification.requestPermission();
+    mostrarOpciones();
+};
