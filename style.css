@@ -100,3 +100,20 @@ button:disabled { background-color: #888; }
 .espacio { height: 10px; width: 100%; }
 .espacio-blanco { height: 25px; width: 100%;}
 
+/banner UMBRA
+.banner {
+    background-color: #3B3330; /* El color oscuro que ya usas */
+    color: #FFFFFF;            /* Letras blancas para contraste */
+    padding: 20px 0;           /* Espacio arriba y abajo del texto */
+    margin-bottom: 25px;       /* Espacio antes del temporizador */
+    box-shadow: 0 4px 6px rgba(0,0,0,0.2); /* Una sombra suave para profundidad */
+    text-align: center;
+}
+
+.banner h1 {
+    margin: 0;
+    font-size: 2.5rem;         /* Letra grande y llamativa */
+    letter-spacing: 5px;       /* Un toque moderno */
+    font-weight: 300;          /* Estilo más fino y elegante */
+}
+
